@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Link } from 'react';
 
 const Card = (props) => {
 
-    const productPrice = props.orderCart.reduce((total, proCat) => total + proCat.price, 0);
+    const productPrice = props.orderCart.reduce((total, proCat) => total + proCat.price * proCat.quantity, 0);
+
+    //console.log(props.orderCart);
 
     const discount = ((productPrice * 5) / 100);
 
@@ -28,16 +30,21 @@ const Card = (props) => {
         <Fragment>
 
             <div className="bg-warning p-3">
-                <span class="font-weight-bold">Order Recap</span>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Order Items</span> <span>{props.orderCart.length}</span> </div>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Product Price</span> <span>${toFixedDecimal(productPrice)}</span> </div>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Discount</span> <span>- ${toFixedDecimal(discount)}</span> </div>
+                <span className="font-weight-bold">Order Recap</span>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Order Items</span> <span>{props.orderCart.length}</span> </div>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Product Price</span> <span>${toFixedDecimal(productPrice)}</span> </div>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Discount</span> <span>- ${toFixedDecimal(discount)}</span> </div>
 
                 <hr />
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Shipping Cost </span> <span>${shippingCost}</span> </div>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Tax + VAT </span> <span>${toFixedDecimal(taxVat)}</span> </div>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Shipping Cost </span> <span>${shippingCost}</span> </div>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Tax + VAT </span> <span>${toFixedDecimal(taxVat)}</span> </div>
                 <hr />
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total </span> <span class="text-success">${toFixedDecimal(grandTotal)}</span> </div>
+                <div className="d-flex justify-content-between mt-2"> <span className="fw-500">Total </span> <span className="text-success">${toFixedDecimal(grandTotal)}</span> </div>
+            </div>
+            <div>
+                {
+                    props.children
+                }
             </div>
 
 

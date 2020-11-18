@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.App{
+  font-family: 'Poppins', sans-serif;
+}
+
+.logOut span{
+  color:green;
+}
+
+.logOut img{
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 3px;
+}
+
+.ship-form{
+  width: 400px;
+  margin: 0 auto;
+
+}
+
+.ship-form input{
+  display: block;
+  margin-top: 30px;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.error{
+  color: red;
+}

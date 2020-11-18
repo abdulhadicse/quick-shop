@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
 
-    const {img, name, seller, price, stock} = props.single;
+    const {img, name, seller, price, stock, key} = props.single;
     return (
         <Fragment>
             <div class="row mb-4 border p-2 rounded">
@@ -19,13 +20,15 @@ const Product = (props) => {
                     <div>
                         <div class="d-flex justify-content-between ml-4">
                             <div>
-                                <h5>{name}</h5>
+                                <h5> <Link to={"/product/"+ key} >{name}</Link> </h5>
                                 <p class="mb-3 text-muted text-uppercase small">by: {seller}</p>
                                 <p class="mb-2 text-muted text-uppercase small font-weight-bold">${price}</p>
                                 <p class="mb-3 text-muted text-uppercase small">only {stock} left in stoke - order soon</p>
 
                                 <div>
-                                    <button className="btn btn-success" onClick= {()=> props.clickEvent(props.single)}><FontAwesomeIcon icon={faCartPlus} /> Add to Cart</button>
+                                    {
+                                        props.btnShow && <button className="btn btn-success" onClick= {()=> props.clickEvent(props.single)}><FontAwesomeIcon icon={faCartPlus} /> Add to Cart</button>
+                                    }
                                 </div>
                             </div>
                         </div>
